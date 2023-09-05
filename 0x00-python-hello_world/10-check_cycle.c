@@ -22,11 +22,9 @@ int check_cycle(listint_t *list)
 		temp = temp->next;
 		/*current moves two step*/
 		current = current->next->next;
-	}
 
 	/*check if the pointers meet at any point of the movement*/
 	if (temp == current)
-	{
 		/*if they meet, then there is a cycle*/
 		return (1);
 	}
