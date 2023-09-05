@@ -2,4 +2,4 @@
 
 for alpha in range(97, 122):
     if (chr(alpha) != 'q' and chr(alpha) != 'e'):
-         print("{}".format(chr(alpha)), end="")
+        print("{}".format(chr(alpha)), end='')
