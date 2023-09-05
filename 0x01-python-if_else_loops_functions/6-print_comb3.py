@@ -4,6 +4,6 @@ for num in range(10):
         if num == num2 or num2 < num:
             continue
         if num != 8 or num2 != 9:
-            print("{}{}".format(num,num2), end=", ")
+            print("{}{}".format(num, num2), end=", ")
         else:
             print("{}{}".format(num, num2), end="\n")
