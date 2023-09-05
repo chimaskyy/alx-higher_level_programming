@@ -16,7 +16,7 @@ int check_cycle(listint_t *list)
 		return (0);
 
 	/*move the pointers continously through the list*/
-	while (current != NULL && current->next != NULL)
+	while (temp != NULL && current != NULL && current->next != NULL)
 	{
 		/*temp moves one step at a time*/
 		temp = temp->next;
