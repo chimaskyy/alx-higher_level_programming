@@ -9,5 +9,5 @@ if __name__ == "__main__":
 
     for nums in args:
         sum += int(nums)
-    
+
     print(sum)
