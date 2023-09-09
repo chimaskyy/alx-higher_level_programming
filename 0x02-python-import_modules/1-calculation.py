@@ -2,6 +2,7 @@
 
 if __name__ == "__main__":
     import calculator_1 as calc
+    print(dir(calc))
     a = 10
     b = 5
     result = calc.add(a, b)
