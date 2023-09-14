@@ -23,7 +23,7 @@ def roman_to_int(roman_string):
 
     if not roman_string:
         return 0
-    if not rom:
+    if not type(roman_string) == str:
         return 0
     result = 0
 
