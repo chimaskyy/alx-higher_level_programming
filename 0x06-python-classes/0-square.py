@@ -1,6 +1,9 @@
 #!/usr/bin/python
 """Class defining a square
-    It is an empty class"""
+    
+    It is an empty class
+
+    """
 
 
 class Square:
