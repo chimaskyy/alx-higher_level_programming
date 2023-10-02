@@ -1,11 +1,10 @@
 #!/usr/bin/python3
 """
-Define a Rectangle class
+Define a rectangle class
 """
 
-
 class Rectangle:
-    """Define a class rectangle"""
+    """Define class"""
     def __init__(self, width=0, height=0):
         self.width = width
         self.height = height
@@ -16,10 +15,11 @@ class Rectangle:
 
     @width.setter
     def width(self, width):
+        """width setter"""
         if type(width) is not int:
             raise TypeError('width must be an integer')
         elif width < 0:
-            raise ValueError('width must be >= 0')
+            raise valueError('width must be >= 0')
         self.__width = width
 
     @property
@@ -44,9 +44,8 @@ class Rectangle:
         return peri
 
     def __str__(self):
-        """string representation of intance"""
         rect = ""
-        if self.__width != 0 or self.__height != 0:
+        if self.__width != 0 and self.__height != 0:
             for i in range(self.__height):
                 rect += "#" * self.__width
                 if i < self.__height - 1:
@@ -56,3 +55,6 @@ class Rectangle:
     def __repr__(self):
         """object representation of instance"""
         return "Rectangle({}, {})".format(self.__width, self.__height)
+
+    def __del__(self):
+        print("Bye rectangle...")
