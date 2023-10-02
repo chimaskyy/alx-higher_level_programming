@@ -4,6 +4,7 @@ This is a function that adds two integers
 Returns sum of two integers
 """
 
+
 def add_integer(a, b=98):
     """Takes two parameter
     Returns the sum of the two parameters
@@ -17,4 +18,3 @@ def add_integer(a, b=98):
     elif type(b) not in (int, float):
         raise TypeError('b must be an integer')
     return int(a) + int(b)
-
