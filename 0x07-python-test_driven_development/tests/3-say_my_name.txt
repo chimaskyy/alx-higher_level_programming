@@ -1,16 +1,30 @@
->>> say_my_name = __import__('3-say_my_name').say_my_name
+>>> say_my_name = __import__("3-say_my_name").say_my_name
 
->>> say_my_name("John", "Smith")
-My name is John Smith
->>> say_my_name("John")
-My name is John
->>> try:
-...     say_my_name(12, "White")
-... except Exception as e:
-...     print(e)
-first_name must be a string
->>> try:
-...     say_my_name("White", 3)
-... except Exception as e:
-...     print(e)
-last_name must be a string
+>>> say_my_name("Chiamaka", "Jessica")
+My name is Chiamaka Jessica
+
+>>> say_my_name("Chiamaka")
+My name is Chiamaka
+
+>>> say_my_name([3], "Chiamaka")
+Traceback (most recent call last):
+        ...
+TypeError: first_name must be a string
+
+>>> say_my_name({}, "Chiamaka")
+Traceback (most recent call last):
+        ...
+TypeError: first_name must be a string
+
+>>> say_my_name("", None)
+Traceback (most recent call last):
+        ...
+TypeError: first_name must be a string
+
+>>> say_my_name(None, "Chiamaka")
+Traceback (most recent call last):
+        ...
+TypeError: first_name must be a string
+
+>>> say_my_name("////", "////")
+My name is //// ////
