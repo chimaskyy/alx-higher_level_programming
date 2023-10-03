@@ -1,40 +1,68 @@
+=================================
+To Use 2-matrix_divided.py
+=================================
+
+Contains a single funcion
+
+```
+matrix_divided(matrix, div)
+```
+Elements of amatrix is divided by an integer
+
+Usage:
+======
+
+List of list and an integer divisor passed to parameter `matrix, div`
+
+Test function with list of list
+
 >>> matrix_divided = __import__('2-matrix_divided').matrix_divided
 
 >>> matrix_divided([[1, 2, 3], [4, 5, 6]], 3)
 [[0.33, 0.67, 1.0], [1.33, 1.67, 2.0]]
+
 >>> matrix_divided([[1, 2.0, 3.2], [4, 5.0, 6.0]], 3)
 [[0.33, 0.67, 1.07], [1.33, 1.67, 2.0]]
+
 >>> matrix_divided([[-1, 2, -3], [4, -5, 6]], 3)
 [[-0.33, 0.67, -1.0], [1.33, -1.67, 2.0]]
+
 >>> matrix_divided([[6, 20, 5], [14, 32, 17]], 2.5)
 [[2.4, 8.0, 2.0], [5.6, 12.8, 6.8]]
->>> try:
-...    matrix_divided([4, 6, -5], 3)
-... except Exception as e:
-...     print(e)
-matrix must be a matrix (list of lists) of integers/floats
->>> try:
-...    matrix_divided([[-1, 'h', -3], [4, -5, 5]], 3)
-... except Exception as e:
-...     print(e)
-matrix must be a matrix (list of lists) of integers/floats
->>> try:
-...    matrix_divided([[-1, 4, -3], [4, -5, 7]], 'a')
-... except Exception as e:
-...     print(e)
-div must be a number
->>> try:
-...    matrix_divided([[-1, 4, -3], [4, -5, 3]], 0)
-... except Exception as e:
-...     print(e)
-division by zero
->>> try:
-...    matrix_divided([[-1, 4 + 1j, -3], [4, -5, 5]], 4)
-... except Exception as e:
-...     print(e)
-matrix must be a matrix (list of lists) of integers/floats
->>> try:
-...    matrix_divided([[1, 4, 3], [4, 7]], 2)
-... except Exception as e:
-...     print(e)
-Each row of the matrix must have the same size
+
+Cases where error can occure
+==========
+passing the wrong argurement
+
+>>> matrix_divided([4, 6, -5], 3)
+Traceback (most recent call last):
+        ...
+TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+>>> matrix_divided([[-1, 'h', -3], [4, -5, 5]], 3)
+Traceback (most recent call last):
+        ...
+TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+passing string as divisor
+
+>>> matrix_divided([[-1, 4, -3], [4, -5, 7]], 'a')
+Traceback (most recent call last):
+        ...
+TypeError: div must be a number
+
+passing 0 as the divisor
+
+>>> matrix_divided([[-1, 4, -3], [4, -5, 3]], 0)
+Traceback (most recent call last):
+        ...
+ZeroDivisionError: division by zero
+
+Row not of same size
+
+>>> matrix_divided([[1, 4, 3], [4, 7]], 2)
+Traceback (most recent call last):
+        ...
+TypeError: Each row of the matrix must have the same size
+
+

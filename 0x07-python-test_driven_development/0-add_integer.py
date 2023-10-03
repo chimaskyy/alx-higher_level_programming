@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """
-This is a function that adds two integers
-Returns sum of two integers
+This module contains a function that adds two integers
+
 """
 
 def add_integer(a, b=98):
