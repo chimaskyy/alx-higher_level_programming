@@ -7,7 +7,7 @@ Contains a single funcion
 ```
 matrix_divided(matrix, div)
 ```
-Elements of amatrix is divided by an integer
+Elements of a matrix is divided by an integer
 
 Usage:
 ======
@@ -34,12 +34,12 @@ Cases where error can occure
 ==========
 passing the wrong argurement
 
->>> matrix_divided([4, 6, -5], 3)
+>>> matrix_divided([4, 6, -5], 3) # doctest: +NORMALIZE_WHITESPACE
 Traceback (most recent call last):
         ...
 TypeError: matrix must be a matrix (list of lists) of integers/floats
 
->>> matrix_divided([[-1, 'h', -3], [4, -5, 5]], 3)
+>>> matrix_divided([[-1, 'h', -3], [4, -5, 5]], 3) # doctest: +NORMALIZE_WHITESPACE
 Traceback (most recent call last):
         ...
 TypeError: matrix must be a matrix (list of lists) of integers/floats
