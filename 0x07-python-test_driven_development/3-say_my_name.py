@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-This is a module that prints first and last name
+This module contains a function that prints first and last name
 Inputs must be strings
 """
 

@@ -1,3 +1,18 @@
+===============================
+ To Use 4-print_square.py
+===============================
+
+Contains of one function
+
+```
+print_square(size)
+```
+
+This Function prints out a square using `#` character 
+
+Usage
+=====
+
 >>> print_square = __import__('4-print_square').print_square
 
 >>> print_square(4)
@@ -9,6 +24,11 @@
 >>> print_square(2)
 ##
 ##
+
+>>> print_square(3.55)
+###
+###
+###
 
 >>> print_square(-1)
 Traceback (most recent call last):
@@ -25,7 +45,7 @@ Traceback (most recent call last):
         ...
 TypeError: size must be an integer
 
->>> print_square(2.3)
+>>> print_square(None)
 Traceback (most recent call last):
         ...
 TypeError: size must be an integer

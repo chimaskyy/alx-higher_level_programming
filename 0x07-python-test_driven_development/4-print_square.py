@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-This module print a square with the character #
+This module contains a function that prints a square with the character #
 Size must be a positive integer
 """
 
