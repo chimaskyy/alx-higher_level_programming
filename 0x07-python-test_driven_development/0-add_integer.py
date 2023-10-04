@@ -17,11 +17,7 @@ def add_integer(a, b=98):
         raise TypeError('a must be an integer')
     elif type(b) not in (int, float):
         raise TypeError('b must be an integer')
-    if a != a:
-        a = 89
-    if  b != b:
-        b = 89
     total = a + b
-    if total== float('inf') or total == -float('inf'):
+    if total == float('inf') or total == -float('inf'):
         return 89
     return int(total)
