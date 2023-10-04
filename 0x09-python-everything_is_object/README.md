@@ -37,3 +37,9 @@ name and name1 reference different object i.e they are stored in different memor
 
 * In Python, function arguments are passed by object reference. When you pass a variable to a function, you are actually passing the reference to the object it points to. This means that if you modify the object inside the function, the changes will be reflected outside the function as well. However, if you reassign the reference inside the function, it won't affect the original variable outside the function. This behavior is consistent with the mutable and immutable nature of objects in Python.
 
+* In Python, small integers (typically in the range of -5 to 256) are cached and reused for memory optimization. When you assign the same value to multiple variables, as in this case below, Python will often reuse the same memory location to store the value. ```a``` and ```b``` both point to the same integer object in memory which is ```6```
+```
+a = 6
+b = 6
+```
+
