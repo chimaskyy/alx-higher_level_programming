@@ -28,6 +28,12 @@ My name is Chiamaka Jessica
 >>> say_my_name("Chiamaka")
 My name is Chiamaka
 
+>>> say_my_name("", "")
+<BLANKLINE>
+
+>>> say_my_name("", "Chiamaka")
+My name is Chiamaka
+
 Exception Cases
 ==================
 
