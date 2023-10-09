@@ -11,16 +11,9 @@ class MyList(list):
     Defined class
     """
 
-    def __init__(self, *args):
-        """
-        instance initialization
-        """
-        super.__init__(*args)
-
     def print_sorted(self):
         """
         Function that print list in ascending order
         """
-
-    new_list = sorted(self)
-    print(new_list)
+        new_list = sorted(self)
+        print(new_list)
