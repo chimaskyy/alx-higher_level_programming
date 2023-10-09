@@ -17,8 +17,8 @@ Currently has nothing implemented for integer
 Usage:
 ======
 
-BaseGeometry = __import__('7-base_geometry').BaseGeometry
-bg = BaseGeometry
+>>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+>>> bg = BaseGeometry
 
 >>> bg.integer_validator("width", 89)
 
@@ -62,10 +62,10 @@ Traceback (most recent call last):
         ...
 TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
 
->>> bg.integer_validator()
+>>> bg.integer_validator("Age")
 Traceback (most recent call last):
         ...
-TypeError: integer_validator() missing 2 required positional arguments: 'value'
+TypeError: integer_validator() missing 1 required positional arguments: 'value'
 
 
 

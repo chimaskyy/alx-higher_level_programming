@@ -8,8 +8,7 @@ another class
 Rectangle = __import__('9-rectangle').Rectangle
 
 
-
-class Square:
+class Square(Rectangle):
     """
     Iherits from the class Rectangle
     """
@@ -19,4 +18,4 @@ class Square:
 
         super().integer_validator("size", size)
         self.__size = size
-        super().__init__(size.__size, self.__size)
+        super().__init__(self.__size, self.__size)
