@@ -2,7 +2,7 @@
 To Use 7-base_geometry.py
 =================================
 
-Contains two funcion
+Contains a class `BaseGeometry` with two method
 
 ```
 def integer_validator(self, name, value)
@@ -12,7 +12,7 @@ validates integer value
 ```
 def area(self)
 ```
-Currently has nothing implemented for integer
+Calculates area of `BaseGeometry`
 
 Usage:
 ======
@@ -53,6 +53,16 @@ Traceback (most recent call last):
 TypeError: Size must be an integer
 
 >>> bg.integer_validator("class", (1, 2, 3))
+Traceback (most recent call last):
+        ...
+TypeError: class must be an integer
+
+>>> bg.integer_validator("class", True)
+Traceback (most recent call last):
+        ...
+TypeError: class must be an integer
+
+>>> bg.integer_validator("class", None)
 Traceback (most recent call last):
         ...
 TypeError: class must be an integer
