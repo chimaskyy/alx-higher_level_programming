@@ -25,7 +25,7 @@ class Student:
                 if key in attrs:
                     attributes[key] = value
             return attributes
-    
+
     def reload_from_json(self, json):
         '''replaces all attributes of the Student instance'''
         if isinstance(json, dict):
