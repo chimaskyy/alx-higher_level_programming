@@ -10,10 +10,10 @@ def append_after(filename="", search_string="", new_string=""):
     after another line'''
 
     with open(filename, 'r', encoding="utf-8")as f:
-        data = f.readlines()
+        lines = f.readlines()
 
-    with open(filename, 'w') as f:
-        for line in data:
+    with open(filename, 'w', encoding="utf-8") as f:
+        for line in lines:
             f.write(line)
             if search_string in line:
-                f.write(new_string + '\n')
+                f.write(new_string)
