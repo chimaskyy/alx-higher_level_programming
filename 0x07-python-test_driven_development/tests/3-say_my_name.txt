@@ -1,0 +1,56 @@
+==========================
+ To Use 3-say_my_name.py
+==========================
+
+Contains one function
+
+```
+say_my_name(first_name, last_name="")
+```
+
+takes two parameters:-
+
+first_name 
+last_name (contains a default empty string)
+T
+
+Prints name in the following format:
+My name is <first name> <last name> 
+
+Usage
+=========
+
+>>> say_my_name = __import__("3-say_my_name").say_my_name
+
+>>> say_my_name("Chiamaka", "Jessica")
+My name is Chiamaka Jessica
+
+>>> say_my_name("Chiamaka")
+My name is Chiamaka
+
+>>> say_my_name("", "")
+<BLANKLINE>
+
+>>> say_my_name("", "Chiamaka")
+My name is Chiamaka
+
+Exception Cases
+==================
+
+>>> say_my_name([3], "Chiamaka")
+Traceback (most recent call last):
+        ...
+TypeError: first_name must be a string
+
+>>> say_my_name({}, "Chiamaka")
+Traceback (most recent call last):
+        ...
+TypeError: first_name must be a string
+
+>>> say_my_name(None, "Chiamaka")
+Traceback (most recent call last):
+        ...
+TypeError: first_name must be a string
+
+>>> say_my_name("////", "////")
+My name is //// ////
