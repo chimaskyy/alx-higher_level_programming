@@ -6,6 +6,8 @@ Unittest for class Base
 import unittest
 from models.base import Base
 from models.rectangle import Rectangle
+import sys
+from io import StringIO 
 
 class TestRectangle(unittest.TestCase):
     """Testing Rectangle class"""
@@ -216,3 +218,194 @@ class TestRectangle(unittest.TestCase):
         r1.width = 3
         r1.height = 3
         self.assertEqual(r1.area(), 9)
+
+    '''@staticmethod
+    def get_stdout(self,_method, *args, **kwargs):
+        #captures stdout
+        #create StringIO obj to capture output
+        _output = io.StringIO
+        #redirect stdout to output obj
+        sys.stdout = _output
+
+        #call specified method on Rect objrct
+        _method(*args, **kwargs)
+        
+        #Restore original stdout
+        sys.stdout = sys.__stdout__
+
+        #return captured output as a string
+        return _output.getvalue()
+    
+    def test_display(self):
+        r = Rectangle(4, 6)
+        _getOutput = get_stdout(r.display)
+        expected = """
+
+  ####
+  ####
+  ####
+  ####
+  ####
+  ####
+"""
+        self.assertEqual(_getOutput, expected)'''
+    
+    def test_display(self):
+        r = Rectangle(2, 3)
+        #define expected output
+        expected = "##\n##\n##"
+        #save original sys.stdout
+        save_out = sys.stdout
+        try:
+            #create StringIO obj to capture stdout
+            _output = StringIO()
+            #redirect sys.stdout to _output
+            sys.stdout = _output
+            r.display()
+            #get captured _output as a string and strip trailing whitespace
+            output = _output.getvalue().strip()
+            self.assertEqual(output, expected)
+        finally:
+            #restore originla sys.stdout
+            sys.stdout = save_out
+
+
+    def test_display_four_arg(self):
+        r = Rectangle(1, 1, 0, 0)
+        expected = "#"
+        save_out = sys.stdout
+        try:
+            _output = StringIO()
+            sys.stdout = _output
+            r.display()
+            output = _output.getvalue().strip()
+            self.assertEqual(output, expected)
+        finally:
+            sys.stdout = save_out
+
+    '''def test_display_all_arg(self):
+        r = Rectangle(5, 3, 2, 2, 2)
+        expected = "  #####\n  #####\n  #####"
+        save_out = sys.stdout
+        try:
+            _output = StringIO()
+            sys.stdout = _output
+            r.display()
+            output = _output.getvalue().strip()
+            self.assertEqual(output, expected)
+        finally:
+            sys.stdout = save_out '''    
+    def test_str_with_two_arg(self): 
+        '''test printing  rectangle'''
+        r = Rectangle(4, 7) 
+        expected = "[Rectangle] (1) 0/0 - 4/7"
+        str_out = str(r)
+        self.assertEqual(str_out, expected) 
+
+    def test_str_with_three_arg(self): 
+        '''test printing  rectangle'''
+        r = Rectangle(4, 7, 5) 
+        expected = "[Rectangle] (1) 5/0 - 4/7"
+        str_out = str(r)
+        self.assertEqual(str_out, expected)
+
+    def test_str_with_four_arg(self): 
+        '''test printing  rectangle'''
+        r = Rectangle(4, 7, 5, 9) 
+        expected = "[Rectangle] (1) 5/9 - 4/7"
+        str_out = str(r)
+        self.assertEqual(str_out, expected)
+
+    def test_str_with_four_arg(self): 
+        '''test printing  rectangle'''
+        r = Rectangle(4, 7, 5, 9, 6) 
+        expected = "[Rectangle] (6) 5/9 - 4/7"
+        str_out = str(r)
+        self.assertEqual(str_out, expected)
+
+    def test_RectangleUpdate_args(self): 
+        '''test printing  updated rectangle'''
+        r = Rectangle(10, 10, 10, 10)
+        r.update() 
+        r.update(4)
+        r.update(4, 5)
+        r.update(4, 5, 6)
+        r.update(4, 5, 6, 7)
+        r.update(4, 5, 6, 7, 8)
+
+        expected = "[Rectangle] (4) 7/8 - 5/6"
+        str_out = str(r)
+        self.assertEqual(str_out, expected)
+
+    def test_RectangleUpdate_kwargs(self):
+        '''change height and width'''
+        r = Rectangle(10, 10, 10, 10) 
+        r.update(height=4)
+        r.update(width=3)
+        expected = "[Rectangle] (1) 10/10 - 3/4"
+        str_out = str(r)
+        self.assertEqual(str_out, expected)
+
+    
+    def test_RectangleUpdate_kwargs(self):
+        '''change height and width'''
+        r = Rectangle(10, 10, 10, 10) 
+        r.update(id=4)
+        expected = "[Rectangle] (4) 10/10 - 10/10"
+        str_out = str(r)
+        self.assertEqual(str_out, expected)
+
+    def test_RectangleUpdate_kwargs(self):
+        '''change height and width'''
+        r = Rectangle(10, 10, 10, 10) 
+        r.update(x=4)
+        expected = "[Rectangle] (1) 4/10 - 10/10"
+        str_out = str(r)
+        self.assertEqual(str_out, expected)
+
+    def test_RectangleUpdate_kwargs(self):
+        '''change y'''
+        r = Rectangle(10, 10, 10, 10) 
+        r.update(y=4)
+        expected = "[Rectangle] (1) 10/4 - 10/10"
+        str_out = str(r)
+        self.assertEqual(str_out, expected)
+
+    def test_RectangleUpdate_kwargs(self):
+        '''change all args'''
+        r = Rectangle(10, 10, 10, 10) 
+        r.update(height=4, width=8, x=9, id=6, y=5)
+        expected = "[Rectangle] (6) 9/5 - 8/4"
+        str_out = str(r)
+        self.assertEqual(str_out, expected) 
+
+    def test_to_dictionary(self):
+        r = Rectangle(10, 5, 7, 9, 5)
+        r_dict = r.to_dictionary()
+        self.assertEqual(r_dict.get("id"), 5)
+        self.assertEqual(r_dict.get("width"), 10)
+        self.assertEqual(r_dict.get("height"), 5)
+        self.assertEqual(r_dict.get("x"), 7)
+        self.assertEqual(r_dict.get("y"), 9)
+
+    def test_to_dictionary_private_attr(self):
+        '''Test that private attribute are not included in dictionary'''
+        r = Rectangle(10, 5, 7, 9, 5)
+        r_dict = r.to_dictionary()
+        self.assertIsNone(r_dict.get("_Rectangle__width"))
+        self.assertIsNone(r_dict.get("_Rectangle__height"))
+        self.assertIsNone(r_dict.get("_Rectangle__x"))
+        self.assertIsNone(r_dict.get("_Rectangle__y"))
+
+        
+
+
+
+    
+
+
+
+
+
+
+    

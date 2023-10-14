@@ -117,5 +117,54 @@ class Rectangle(Base):
         return self.__width * self.__height
     
     def display(self):
-        '''print rect instance with char #'''
+        '''print rect instances with char #'''
+        print("\n" * self.y, end="")
+        for num in range(self.height):
+            print(" " * self.x, end="")
+            print("#" * self.width, end="")
+            print()
+
+    def __str__(self):
+        return "[Rectangle] ({}) {}/{} - {}/{}".format(self.id,
+                                                       self.__x, self.__y, self.__width, self.__height)
+
+    def update(self, *args, **kwargs):
+        '''
+        Update attri of Rectangle instance
+        Args:
+            *args: Variable number of positional argument(id,width,heigh,x,y)
+            kwargs: Variable number of Keyword args'''
+        if args != ():
+            if len(args) >= 1:
+                self.id = args[0]
+            if len(args) >= 2:
+                self.width = args[1]
+            if len(args) >= 3:
+                self.height = args[2]
+            if len(args) >= 4:
+                self.x = args[3]
+            if len(args) >= 5:
+                self.y = args[4]
         
+        elif kwargs:
+            for key, value in kwargs.items():
+                if key == "id":
+                    self.id = value
+                if key == "width":
+                    self.width = value 
+                if key == "height":
+                    self.height = value  
+                if key == "x":
+                    self.x = value
+                if key == "y":
+                    self.y = value
+
+    def to_dictionary(self):
+        '''Return dict representation of rectangle'''
+        return {
+            "id": self.id,
+            "width": self.width,
+            "height": self.height,
+            "x": self.x,
+            "y": self.y
+        }
