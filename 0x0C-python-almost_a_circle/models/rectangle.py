@@ -38,7 +38,9 @@ class Rectangle(Base):
             raise TypeError('y must be an integer')
         elif y < 0:
             raise ValueError('y must be >= 0')
-        super().__init__(id) #call Base class constructor
+
+        # call Base class constructor
+        super().__init__(id)
         self.__width = width
         self.__height = height
         self.__x = x
@@ -50,7 +52,7 @@ class Rectangle(Base):
         This is used to validate Rectangle attributes
         args:
             **kwargs: variable number of keyword argument
-        
+
         for key, value in kwargs.items():
             if key == "width" or key == "height":
                 if type(value) is not int:
@@ -63,11 +65,10 @@ class Rectangle(Base):
                 if value <= 0:
                     raise ValueError('{} must be >= 0'.format(key))"""
 
-    
     @property
     def width(self):
         return self.__width
-    
+
     @width.setter
     def width(self, value):
         if type(value) is not int:
@@ -79,7 +80,7 @@ class Rectangle(Base):
     @property
     def height(self):
         return self.__height
-    
+
     @height.setter
     def height(self, value):
         if type(value) is not int:
@@ -91,7 +92,7 @@ class Rectangle(Base):
     @property
     def x(self):
         return self.__x
-    
+
     @x.setter
     def x(self, value):
         if type(value) is not int:
@@ -103,7 +104,7 @@ class Rectangle(Base):
     @property
     def y(self):
         return self.__y
-    
+
     @y.setter
     def y(self, value):
         if type(value) is not int:
@@ -115,7 +116,7 @@ class Rectangle(Base):
     def area(self):
         '''calculates the area of a rectangle'''
         return self.__width * self.__height
-    
+
     def display(self):
         '''print rect instances with char #'''
         print("\n" * self.y, end="")
@@ -125,8 +126,8 @@ class Rectangle(Base):
             print()
 
     def __str__(self):
-        return "[Rectangle] ({}) {}/{} - {}/{}".format(self.id,
-                                                       self.__x, self.__y, self.__width, self.__height)
+        return "[Rectangle] ({}) {}/{} - {}/{}".\
+            format(self.id, self.__x, self.__y, self.__width, self.__height)
 
     def update(self, *args, **kwargs):
         '''
@@ -145,15 +146,14 @@ class Rectangle(Base):
                 self.x = args[3]
             if len(args) >= 5:
                 self.y = args[4]
-        
         elif kwargs:
             for key, value in kwargs.items():
                 if key == "id":
                     self.id = value
                 if key == "width":
-                    self.width = value 
+                    self.width = value
                 if key == "height":
-                    self.height = value  
+                    self.height = value
                 if key == "x":
                     self.x = value
                 if key == "y":
@@ -167,4 +167,4 @@ class Rectangle(Base):
             "height": self.height,
             "x": self.x,
             "y": self.y
-        }
+            }
