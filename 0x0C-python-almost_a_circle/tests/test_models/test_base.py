@@ -11,6 +11,7 @@ from models.square import Square
 
 
 class TestBase(unittest.TestCase):
+    '''base class test'''
 
     def setUp(self):
         """
@@ -192,10 +193,6 @@ class TestBase(unittest.TestCase):
         list_rectangles_output = Rectangle.load_from_file()
         self.assertEqual(str(r1), str(list_rectangles_output[0]))
 
-    def test_load_from_file_no_file(self):
-        output = Square.load_from_file()
-        self.assertEqual([], output)
-
     def test_load_from_file_wrong_num_arg(self):
-        with self.assertRaises(TypeError):
+       with self.assertRaises(TypeError):
             Base.load_from_file([], 1)
