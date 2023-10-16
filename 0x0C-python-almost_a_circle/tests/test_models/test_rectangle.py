@@ -395,4 +395,6 @@ class TestRectangle(unittest.TestCase):
         self.assertIsNone(r_dict.get("_Rectangle__width"))
         self.assertIsNone(r_dict.get("_Rectangle__height"))
         self.assertIsNone(r_dict.get("_Rectangle__x"))
-        self.assertIsNone(r_dict.get("_Rectangle__y"))    
+        self.assertIsNone(r_dict.get("_Rectangle__y"))  
+
+    
