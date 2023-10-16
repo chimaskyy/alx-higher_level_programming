@@ -157,5 +157,51 @@ class TestBase(unittest.TestCase):
         with self.assertRaises(TypeError):
             Base.from_json_string()
 
+    def test_create_rectangle_original(self):
+        r1 = Rectangle(3, 5, 1, 2, 7)
+        r1_dictionary = r1.to_dictionary()
+        r2 = Rectangle.create(**r1_dictionary)
+        self.assertEqual("[Rectangle] (7) 1/2 - 3/5", str(r1))
+
+    def test_create_rectangle_new(self):
+        r1 = Rectangle(7, 4, 3, 3, 1)
+        r1_dictionary = r1.to_dictionary()
+        r2 = Rectangle.create(**r1_dictionary)
+        self.assertFalse(r1 is r2)
+        self.assertFalse(r1 == r2)
+
+        self.assertEqual("[Rectangle] (1) 3/3 - 7/4", str(r2))
+
+    def test_create_with_only_id(self):
+        '''check if dummy instance works'''
+        my_dict = {'id': 7}
+        r3 = Rectangle.create(**my_dict)
+        expected = "[Rectangle] (7) 0/0 - 1/1"
+        str_out = str(r3)
+        self.assertEqual(str_out, expected)
+
+    def test_load_from_file_square(self):
+        s1 = Square(5, 1, 3, 6)
+        s2 = Square(9, 9, 4, 5)
+        Square.save_to_file([s1, s2])
+        list_squares_output = Square.load_from_file()
+        self.assertEqual(str(s1), str(list_squares_output[0]))
+    
+    def test_load_from_file_rectangle(self):
+        r1 = Rectangle(10, 7, 2, 8, 1)
+        r2 = Rectangle(2, 4, 5, 6, 2)
+        Rectangle.save_to_file([r1, r2])
+        list_rectangles_output = Rectangle.load_from_file()
+        self.assertEqual(str(r1), str(list_rectangles_output[0]))
+
+    def test_load_from_file_no_file(self):
+        output = Square.load_from_file()
+        self.assertEqual([], output)
+    
+    def test_load_from_file_wrong_num_arg(self):
+        with self.assertRaises(TypeError):
+            Base.load_from_file([], 1)
+
+
 
 

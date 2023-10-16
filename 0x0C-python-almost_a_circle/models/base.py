@@ -5,7 +5,6 @@ import json
 
 
 
-
 class Base:
     '''This is the base class
     '''
@@ -58,12 +57,33 @@ class Base:
     def create(cls, **dictionary):
         """creates a class from a dict of arguments"""
         
+        from models.rectangle import Rectangle
+        from models.square import Square
         if cls.__name__ == 'Rectangle':
-            dummy = cls(1, 1)
+            dummy = Rectangle(1, 1)
         elif cls.__name__ == 'Square':
-            dummy = cls(1)
+            dummy = Square(1)
         dummy.update(**dictionary)
         return dummy
+
+    @classmethod
+    def load_from_file(cls):
+        """Loads data from file and uses it to get instances associated
+        Returns:
+            a list of instances:
+        """
+        filename = "{}.json".format(cls.__name__)
+
+        try:
+            with open(filename, encoding="utf-8") as f:
+                string = f.read()
+        except FileNotFoundError:
+            return []
+
+        json = cls.from_json_string(string)
+        instances = [cls.create(**element) for element in json]
+        return instances
+
 
 
 
