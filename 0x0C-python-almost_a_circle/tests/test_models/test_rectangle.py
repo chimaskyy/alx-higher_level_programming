@@ -7,13 +7,14 @@ import unittest
 from models.base import Base
 from models.rectangle import Rectangle
 import sys
-from io import StringIO 
+from io import StringIO
+
 
 class TestRectangle(unittest.TestCase):
     """Testing Rectangle class"""
     def setUp(self):
         '''counter setUp'''
-        
+
         Base._Base__nb_objects = 0
 
     def test_rect_id(self):
@@ -29,7 +30,7 @@ class TestRectangle(unittest.TestCase):
     def test_one_args(self):
         with self.assertRaises(TypeError):
             Rectangle(3)
-    
+
     def test_three_args(self):
         r1 = Rectangle(5, 6, 7)
         self.assertEqual(r1.id, 1)
@@ -37,11 +38,10 @@ class TestRectangle(unittest.TestCase):
     def test_four_args(self):
         r1 = Rectangle(5, 6, 7, 8)
         self.assertEqual(r1.id, 1)
-    
+
     def test_all_argument(self):
         r1 = Rectangle(5, 6, 8, 9, 9)
         self.assertEqual(r1.id, 9)
-
 
     def test_width_private_attr(self):
         """Test width as private attribute"""
@@ -99,7 +99,7 @@ class TestRectangle(unittest.TestCase):
         '''Test for ivalid attribute(value) for width'''
         with self.assertRaisesRegex(TypeError, 'width must be an integer'):
             r1 = Rectangle(True, 5)
-        
+
         with self.assertRaisesRegex(TypeError, 'width must be an integer'):
             r1 = Rectangle(None, 5)
 
@@ -110,7 +110,7 @@ class TestRectangle(unittest.TestCase):
             r1 = Rectangle(-8, 5)
 
         with self.assertRaisesRegex(TypeError, 'width must be an integer'):
-            r1 = Rectangle((1,2), 5)
+            r1 = Rectangle((1, 2), 5)
 
         with self.assertRaisesRegex(ValueError, 'width must be > 0'):
             r1 = Rectangle(0, 5)
@@ -134,7 +134,7 @@ class TestRectangle(unittest.TestCase):
         '''Test for ivalid attribute(value) for height'''
         with self.assertRaisesRegex(TypeError, 'height must be an integer'):
             r1 = Rectangle(5, True)
-        
+
         with self.assertRaisesRegex(TypeError, 'height must be an integer'):
             r1 = Rectangle(5, None)
 
@@ -151,7 +151,7 @@ class TestRectangle(unittest.TestCase):
             r1 = Rectangle(5, 0)
 
         with self.assertRaisesRegex(TypeError, 'height must be an integer'):
-            r1 = Rectangle(6,{1, 5})
+            r1 = Rectangle(6, {1, 5})
 
         with self.assertRaisesRegex(TypeError, 'height must be an integer'):
             r1 = Rectangle(8, "5")
@@ -169,9 +169,9 @@ class TestRectangle(unittest.TestCase):
         '''Test for ivalid attribute(value) for height'''
         with self.assertRaisesRegex(TypeError, 'x must be an integer'):
             r1 = Rectangle(5, 5, "8")
-        
+
         with self.assertRaisesRegex(TypeError, 'x must be an integer'):
-            r1 = Rectangle(5, 6, [5,7])
+            r1 = Rectangle(5, 6, [5, 7])
 
         with self.assertRaisesRegex(TypeError, 'x must be an integer'):
             r1 = Rectangle(5, 5, (4, 6))
@@ -189,9 +189,9 @@ class TestRectangle(unittest.TestCase):
         '''Test for ivalid attribute(value) for height'''
         with self.assertRaisesRegex(TypeError, 'y must be an integer'):
             r1 = Rectangle(5, 5, 7, "8")
-        
+
         with self.assertRaisesRegex(TypeError, 'y must be an integer'):
-            r1 = Rectangle(5, 6, 7, [5,7])
+            r1 = Rectangle(5, 6, 7, [5, 7])
 
         with self.assertRaisesRegex(TypeError, 'y must be an integer'):
             r1 = Rectangle(5, 5, 6, (4, 6))
@@ -229,13 +229,13 @@ class TestRectangle(unittest.TestCase):
 
         #call specified method on Rect objrct
         _method(*args, **kwargs)
-        
+
         #Restore original stdout
         sys.stdout = sys.__stdout__
 
         #return captured output as a string
         return _output.getvalue()
-    
+
     def test_display(self):
         r = Rectangle(4, 6)
         _getOutput = get_stdout(r.display)
@@ -249,26 +249,25 @@ class TestRectangle(unittest.TestCase):
   ####
 """
         self.assertEqual(_getOutput, expected)'''
-    
+
     def test_display(self):
         r = Rectangle(2, 3)
-        #define expected output
+        # define expected output
         expected = "##\n##\n##"
-        #save original sys.stdout
+        # save original sys.stdout
         save_out = sys.stdout
         try:
-            #create StringIO obj to capture stdout
+            # create StringIO obj to capture stdout
             _output = StringIO()
-            #redirect sys.stdout to _output
+            # redirect sys.stdout to _output
             sys.stdout = _output
             r.display()
-            #get captured _output as a string and strip trailing whitespace
+            # get captured _output as a string and strip trailing whitespace
             output = _output.getvalue().strip()
             self.assertEqual(output, expected)
         finally:
-            #restore originla sys.stdout
+            # restore originla sys.stdout
             sys.stdout = save_out
-
 
     def test_display_four_arg(self):
         r = Rectangle(1, 1, 0, 0)
@@ -294,39 +293,39 @@ class TestRectangle(unittest.TestCase):
             output = _output.getvalue().strip()
             self.assertEqual(output, expected)
         finally:
-            sys.stdout = save_out '''    
-    def test_str_with_two_arg(self): 
+            sys.stdout = save_out '''
+    def test_str_with_two_arg(self):
         '''test printing  rectangle'''
-        r = Rectangle(4, 7) 
+        r = Rectangle(4, 7)
         expected = "[Rectangle] (1) 0/0 - 4/7"
         str_out = str(r)
-        self.assertEqual(str_out, expected) 
+        self.assertEqual(str_out, expected)
 
-    def test_str_with_three_arg(self): 
+    def test_str_with_three_arg(self):
         '''test printing  rectangle'''
-        r = Rectangle(4, 7, 5) 
+        r = Rectangle(4, 7, 5)
         expected = "[Rectangle] (1) 5/0 - 4/7"
         str_out = str(r)
         self.assertEqual(str_out, expected)
 
-    def test_str_with_four_arg(self): 
+    def test_str_with_four_arg(self):
         '''test printing  rectangle'''
-        r = Rectangle(4, 7, 5, 9) 
+        r = Rectangle(4, 7, 5, 9)
         expected = "[Rectangle] (1) 5/9 - 4/7"
         str_out = str(r)
         self.assertEqual(str_out, expected)
 
-    def test_str_with_four_arg(self): 
+    def test_str_with_four_arg(self):
         '''test printing  rectangle'''
-        r = Rectangle(4, 7, 5, 9, 6) 
+        r = Rectangle(4, 7, 5, 9, 6)
         expected = "[Rectangle] (6) 5/9 - 4/7"
         str_out = str(r)
         self.assertEqual(str_out, expected)
 
-    def test_RectangleUpdate_args(self): 
+    def test_RectangleUpdate_args(self):
         '''test printing  updated rectangle'''
         r = Rectangle(10, 10, 10, 10)
-        r.update() 
+        r.update()
         r.update(4)
         r.update(4, 5)
         r.update(4, 5, 6)
@@ -339,17 +338,16 @@ class TestRectangle(unittest.TestCase):
 
     def test_RectangleUpdate_kwargs(self):
         '''change height and width'''
-        r = Rectangle(10, 10, 10, 10) 
+        r = Rectangle(10, 10, 10, 10)
         r.update(height=4)
         r.update(width=3)
         expected = "[Rectangle] (1) 10/10 - 3/4"
         str_out = str(r)
         self.assertEqual(str_out, expected)
 
-    
     def test_RectangleUpdate_kwargs(self):
         '''change height and width'''
-        r = Rectangle(10, 10, 10, 10) 
+        r = Rectangle(10, 10, 10, 10)
         r.update(id=4)
         expected = "[Rectangle] (4) 10/10 - 10/10"
         str_out = str(r)
@@ -357,7 +355,7 @@ class TestRectangle(unittest.TestCase):
 
     def test_RectangleUpdate_kwargs(self):
         '''change height and width'''
-        r = Rectangle(10, 10, 10, 10) 
+        r = Rectangle(10, 10, 10, 10)
         r.update(x=4)
         expected = "[Rectangle] (1) 4/10 - 10/10"
         str_out = str(r)
@@ -365,7 +363,7 @@ class TestRectangle(unittest.TestCase):
 
     def test_RectangleUpdate_kwargs(self):
         '''change y'''
-        r = Rectangle(10, 10, 10, 10) 
+        r = Rectangle(10, 10, 10, 10)
         r.update(y=4)
         expected = "[Rectangle] (1) 10/4 - 10/10"
         str_out = str(r)
@@ -373,11 +371,11 @@ class TestRectangle(unittest.TestCase):
 
     def test_RectangleUpdate_kwargs(self):
         '''change all args'''
-        r = Rectangle(10, 10, 10, 10) 
+        r = Rectangle(10, 10, 10, 10)
         r.update(height=4, width=8, x=9, id=6, y=5)
         expected = "[Rectangle] (6) 9/5 - 8/4"
         str_out = str(r)
-        self.assertEqual(str_out, expected) 
+        self.assertEqual(str_out, expected)
 
     def test_to_dictionary(self):
         r = Rectangle(10, 5, 7, 9, 5)
@@ -395,6 +393,4 @@ class TestRectangle(unittest.TestCase):
         self.assertIsNone(r_dict.get("_Rectangle__width"))
         self.assertIsNone(r_dict.get("_Rectangle__height"))
         self.assertIsNone(r_dict.get("_Rectangle__x"))
-        self.assertIsNone(r_dict.get("_Rectangle__y"))  
-
-    
+        self.assertIsNone(r_dict.get("_Rectangle__y"))

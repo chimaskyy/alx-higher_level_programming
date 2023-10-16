@@ -10,7 +10,6 @@ from models.rectangle import Rectangle
 from models.square import Square
 
 
-
 class TestBase(unittest.TestCase):
 
     def setUp(self):
@@ -20,7 +19,7 @@ class TestBase(unittest.TestCase):
         Base._Base__nb_objects = 0
 
     def test_Base_without_argument(self):
-    
+
         b1 = Base()
         self.assertEqual(b1.id, 1)
 
@@ -34,7 +33,7 @@ class TestBase(unittest.TestCase):
         b3 = Base(5)
         b4 = Base()
         self.assertEqual(b4.id, 3)
-    
+
     def test_Base_with_bool(self):
         b1 = Base(True)
         self.assertEqual(b1.id, True)
@@ -43,7 +42,6 @@ class TestBase(unittest.TestCase):
         b1 = Base(-6)
         self.assertEqual(b1.id, -6)
 
-    
     '''def test_to_json_string_empty_list(self):
         self.assertEqual(Base.to_json_string([]), "[]")
 
@@ -84,7 +82,7 @@ class TestBase(unittest.TestCase):
 
     def test_save_to_file_empty(self):
         self.assertEqual(Rectangle.save_to_file([]), [])'''
-    
+
     def test_save_to_file_no_args(self):
         with self.assertRaises(TypeError):
             Rectangle.save_to_file()
@@ -98,7 +96,7 @@ class TestBase(unittest.TestCase):
         '''test more than one arg'''
         with self.assertRaises(TypeError):
             Rectangle.save_to_file([2], [5])
-    
+
     def test_save_to_file_with_obj(self):
         r1 = Square(1, 4, 7, 8)
         Square.save_to_file([r1])
@@ -186,7 +184,7 @@ class TestBase(unittest.TestCase):
         Square.save_to_file([s1, s2])
         list_squares_output = Square.load_from_file()
         self.assertEqual(str(s1), str(list_squares_output[0]))
-    
+
     def test_load_from_file_rectangle(self):
         r1 = Rectangle(10, 7, 2, 8, 1)
         r2 = Rectangle(2, 4, 5, 6, 2)
@@ -197,11 +195,7 @@ class TestBase(unittest.TestCase):
     def test_load_from_file_no_file(self):
         output = Square.load_from_file()
         self.assertEqual([], output)
-    
+
     def test_load_from_file_wrong_num_arg(self):
         with self.assertRaises(TypeError):
             Base.load_from_file([], 1)
-
-
-
-

@@ -6,7 +6,7 @@ It inherited from Rectangle class
 
 import unittest
 import sys
-from io import StringIO 
+from io import StringIO
 from models.square import Square
 from models.base import Base
 
@@ -16,9 +16,9 @@ class TestSquare(unittest.TestCase):
 
     def setUp(self):
         '''counter setUp'''
-        
+
         Base._Base__nb_objects = 0
-    
+
     def test_square(self):
         sq_obj = Square(5)
         self.assertEqual(sq_obj.width, 5)
@@ -58,7 +58,7 @@ class TestSquare(unittest.TestCase):
         """test type and value error"""
         with self.assertRaisesRegex(TypeError, 'width must be an integer'):
             r1 = Square([5], 5)
-        
+
         with self.assertRaisesRegex(TypeError, 'width must be an integer'):
             r1 = Square({5}, 6)
 
@@ -73,28 +73,28 @@ class TestSquare(unittest.TestCase):
 
     def test_str_print(self):
         """test str"""
-        r = Square(4) 
+        r = Square(4)
         expected = "[Square] (1) 0/0 - 4"
         str_out = str(r)
         self.assertEqual(str_out, expected)
 
     def test_str_print(self):
         """test str"""
-        r = Square(4, 7) 
+        r = Square(4, 7)
         expected = "[Square] (1) 7/0 - 4"
         str_out = str(r)
         self.assertEqual(str_out, expected)
 
     def test_str_print(self):
         """test str"""
-        r = Square(4, 4, 6) 
+        r = Square(4, 4, 6)
         expected = "[Square] (1) 4/6 - 4"
         str_out = str(r)
         self.assertEqual(str_out, expected)
 
     def test_str_print(self):
         """test str"""
-        r = Square(4, 3, 5) 
+        r = Square(4, 3, 5)
         expected = "[Square] (1) 3/5 - 4"
         str_out = str(r)
         self.assertEqual(str_out, expected)
@@ -102,7 +102,7 @@ class TestSquare(unittest.TestCase):
     def test_area(self):
         r1 = Square(5)
         self.assertEqual(r1.area(), 25)
-    
+
     def test_getter_size(self):
         r1 = Square(7, 8, 9, 0)
         self.assertEqual(r1.size, 7)
@@ -112,10 +112,10 @@ class TestSquare(unittest.TestCase):
         r1.size = 30
         self.assertEqual(r1.size, 30)
 
-    def test_Square_update_args(self): 
+    def test_Square_update_args(self):
         '''test printing  updated rectangle'''
         r = Square(10, 10, 10, 10)
-        r.update() 
+        r.update()
         r.update(4)
         r.update(4, 5)
         r.update(4, 5, 6)
@@ -127,16 +127,15 @@ class TestSquare(unittest.TestCase):
 
     def test_RectangleUpdate_kwargs(self):
         '''change size'''
-        r = Square(10, 10, 10, 10) 
+        r = Square(10, 10, 10, 10)
         r.update(size=4)
         expected = "[Square] (10) 10/10 - 4"
         str_out = str(r)
         self.assertEqual(str_out, expected)
 
-    
     def test_RectangleUpdate_kwargs(self):
         '''change id'''
-        r = Square(10, 10, 10, 10) 
+        r = Square(10, 10, 10, 10)
         r.update(id=4)
         expected = "[Square] (4) 10/10 - 10"
         str_out = str(r)
@@ -144,7 +143,7 @@ class TestSquare(unittest.TestCase):
 
     def test_RectangleUpdate_kwargs(self):
         '''change x'''
-        r = Square(10, 10, 10, 10) 
+        r = Square(10, 10, 10, 10)
         r.update(x=4)
         expected = "[Square] (10) 4/10 - 10"
         str_out = str(r)
@@ -152,7 +151,7 @@ class TestSquare(unittest.TestCase):
 
     def test_RectangleUpdate_kwargs(self):
         '''change y'''
-        r = Square(10, 10, 10, 10) 
+        r = Square(10, 10, 10, 10)
         r.update(y=4)
         expected = "[Square] (10) 10/4 - 10"
         str_out = str(r)
@@ -160,11 +159,11 @@ class TestSquare(unittest.TestCase):
 
     def test_RectangleUpdate_kwargs(self):
         '''change all args'''
-        r = Square(10, 10, 10, 10) 
+        r = Square(10, 10, 10, 10)
         r.update(size=8, x=9, id=6, y=5)
         expected = "[Square] (6) 9/5 - 8"
         str_out = str(r)
-        self.assertEqual(str_out, expected) 
+        self.assertEqual(str_out, expected)
 
     def test_to_dictionary(self):
         r = Square(10, 5, 7)
@@ -173,16 +172,3 @@ class TestSquare(unittest.TestCase):
         self.assertEqual(r_dict.get("size"), 10)
         self.assertEqual(r_dict.get("x"), 5)
         self.assertEqual(r_dict.get("y"), 7)
-
-    
-
-    
-
-
-
-
-
-
-
-
-
