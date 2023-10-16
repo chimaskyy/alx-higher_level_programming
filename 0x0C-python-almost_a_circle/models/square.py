@@ -6,9 +6,10 @@ It inherits from the class Rectangle
 
 from models.rectangle import Rectangle
 
+
 class Square(Rectangle):
     '''class Square inherits from Rectangle class'''
-    
+
     def __init__(self, size, x=0, y=0, id=None):
         """Instantiate a square
         Args:
@@ -22,12 +23,12 @@ class Square(Rectangle):
     def __str__(self):
         return "[Square] ({}) {}/{} - {}".\
             format(self.id, self.x, self.y, self.width)
-    
+
     @property
     def size(self):
         """getter for size"""
         return self.width
-    
+
     @size.setter
     def size(self, size):
         '''setter for size'''
@@ -69,4 +70,3 @@ class Square(Rectangle):
             "x": self.x,
             "y": self.y
             }
-    
