@@ -50,8 +50,10 @@ class Base:
         f = cls.__name__ + ".json"  # generate file for json
         with open(f, "w", encoding="utf-8") as jfile:
             '''write json str rep of list to the file'''
-            jfile.write(Base.to_json_string([obj.to_dictionary()for obj in list_objs]))
+            jfile.write(Base.to_json_string([obj.to_dictionary()
+                        for obj in list_objs]))
         return list_objs
+
     @classmethod
     def create(cls, **dictionary):
         """creates a class from a dict of arguments"""
