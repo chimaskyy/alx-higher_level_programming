@@ -78,11 +78,11 @@ class TestBase(unittest.TestCase):
             self.assertTrue(len(content) == 52)
             self.assertTrue(type(content), str)
 
-    '''def test_save_to_file_None(self):
+    def test_save_to_file_None(self):
         self.assertEqual(Rectangle.save_to_file(None), [])
 
     def test_save_to_file_empty(self):
-        self.assertEqual(Rectangle.save_to_file([]), [])'''
+        self.assertEqual(Rectangle.save_to_file([]), [])
 
     def test_save_to_file_no_args(self):
         with self.assertRaises(TypeError):
@@ -108,11 +108,11 @@ class TestBase(unittest.TestCase):
             self.assertTrue(len(content) == 38)
             self.assertTrue(type(content), str)
 
-    '''def test_save_to_file_empty(self):
+    def test_save_to_file_empty(self):
         self.assertEqual(Base.save_to_file([]), [])
 
     def test_save_to_file_None(self):
-        self.assertEqual(Base.save_to_file(None), [])'''
+        self.assertEqual(Base.save_to_file(None), [])
 
     def test_from_json_string_type(self):
         list_input = [{"id": 89, "width": 10, "height": 4}]
