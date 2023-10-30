@@ -1,5 +1,7 @@
 # Python - Exceptions
 
+* Try and exception is used to handle error in programs to prevent it from crashing
+
 ```
 try:
 	this

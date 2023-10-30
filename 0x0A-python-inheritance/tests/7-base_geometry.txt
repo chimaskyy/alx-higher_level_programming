@@ -1,0 +1,85 @@
+=================================
+To Use 7-base_geometry.py
+=================================
+
+Contains a class `BaseGeometry` with two method
+
+```
+def integer_validator(self, name, value)
+```
+validates integer value
+
+```
+def area(self)
+```
+Calculates area of `BaseGeometry`
+
+Usage:
+======
+
+>>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+>>> bg = BaseGeometry()
+
+>>> bg.integer_validator("width", 89)
+
+>>> bg.integer_validator("width", 0)
+Traceback (most recent call last):
+        ...
+ValueError: width must be greater than 0
+
+>>> bg.integer_validator("Month", -1)
+Traceback (most recent call last):
+        ...
+ValueError: Month must be greater than 0
+
+>>> bg.integer_validator("State", "5")
+Traceback (most recent call last):
+        ...
+TypeError: State must be an integer
+
+>>> bg.integer_validator("Age", {})
+Traceback (most recent call last):
+        ...
+TypeError: Age must be an integer
+
+>>> bg.integer_validator("Size", [])
+Traceback (most recent call last):
+        ...
+TypeError: Size must be an integer
+
+>>> bg.integer_validator("Size", 6.9)
+Traceback (most recent call last):
+        ...
+TypeError: Size must be an integer
+
+>>> bg.integer_validator("class", (1, 2, 3))
+Traceback (most recent call last):
+        ...
+TypeError: class must be an integer
+
+>>> bg.integer_validator("class", True)
+Traceback (most recent call last):
+        ...
+TypeError: class must be an integer
+
+>>> bg.integer_validator("class", None)
+Traceback (most recent call last):
+        ...
+TypeError: class must be an integer
+
+>>> bg.integer_validator()
+Traceback (most recent call last):
+        ...
+TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
+
+>>> bg.integer_validator("Age")
+Traceback (most recent call last):
+        ...
+TypeError: integer_validator() missing 1 required positional argument: 'value'
+
+
+
+
+
+
+
