@@ -219,37 +219,6 @@ class TestRectangle(unittest.TestCase):
         r1.height = 3
         self.assertEqual(r1.area(), 9)
 
-    '''@staticmethod
-    def get_stdout(self,_method, *args, **kwargs):
-        #captures stdout
-        #create StringIO obj to capture output
-        _output = io.StringIO
-        #redirect stdout to output obj
-        sys.stdout = _output
-
-        #call specified method on Rect objrct
-        _method(*args, **kwargs)
-
-        #Restore original stdout
-        sys.stdout = sys.__stdout__
-
-        #return captured output as a string
-        return _output.getvalue()
-
-    def test_display(self):
-        r = Rectangle(4, 6)
-        _getOutput = get_stdout(r.display)
-        expected = """
-
-  ####
-  ####
-  ####
-  ####
-  ####
-  ####
-"""
-        self.assertEqual(_getOutput, expected)'''
-
     def test_display(self):
         r = Rectangle(2, 3)
         # define expected output
@@ -282,9 +251,9 @@ class TestRectangle(unittest.TestCase):
         finally:
             sys.stdout = save_out
 
-    '''def test_display_all_arg(self):
-        r = Rectangle(5, 3, 2, 2, 2)
-        expected = "  #####\n  #####\n  #####"
+    def test_display_without_y(self):
+        r = Rectangle(5, 3, 2)
+        expected = "#####\n  #####\n  #####"
         save_out = sys.stdout
         try:
             _output = StringIO()
@@ -293,7 +262,8 @@ class TestRectangle(unittest.TestCase):
             output = _output.getvalue().strip()
             self.assertEqual(output, expected)
         finally:
-            sys.stdout = save_out '''
+            sys.stdout = save_out
+            
     def test_str_with_two_arg(self):
         '''test printing  rectangle'''
         r = Rectangle(4, 7)

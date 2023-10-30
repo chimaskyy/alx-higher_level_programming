@@ -71,6 +71,18 @@ class TestSquare(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'width must be > 0'):
             r1 = Square(0)
 
+        with self.assertRaisesRegex(TypeError, 'x must be an integer'):
+            r1 = Square(1, "2")
+
+        with self.assertRaisesRegex(TypeError, 'y must be an integer'):
+            r1 = Square(1, 3, "2")
+
+        with self.assertRaisesRegex(ValueError, 'x must be >= 0'):
+            r1 = Square(1, -6)
+
+        with self.assertRaisesRegex(ValueError, 'y must be >= 0'):
+            r1 = Square(1, 2, -6)
+
     def test_str_print(self):
         """test str"""
         r = Square(4)
