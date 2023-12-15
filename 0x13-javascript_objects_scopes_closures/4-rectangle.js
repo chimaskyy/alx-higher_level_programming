@@ -25,25 +25,14 @@ class Rectangle {
   }
 
   rotate () {
-    let i, j, row;
-    for (i = 0; i < this.width * 2; i++) {
-      row = '';
-      for (j = 0; j < this.height * 2; j++) {
-        row += 'X';
-      }
-      console.log(row);
+    const temp = this.width;
+	this.width = this.height;
+	this.height = temp;
     }
-  }
 
   double () {
-    let i, j, row;
-    for (i = 0; i < this.height * 2; i++) {
-      row = '';
-      for (j = 0; j < this.width * 2; j++) {
-        row += 'X';
-      }
-      console.log(row);
-    }
+	this.width *= 2;
+	this.height *= 2;
   }
 }
 
