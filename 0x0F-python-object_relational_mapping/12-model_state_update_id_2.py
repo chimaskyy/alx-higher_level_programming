@@ -1,6 +1,6 @@
 #!/usr/bin/python3
-""" This module prints state object with the
-name passed as argumment"""
+""" This module updates the value of an object
+at index 2"""
 
 if __name__ == "__main__":
     from sqlalchemy import create_engine

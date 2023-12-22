@@ -1,6 +1,6 @@
 #!/usr/bin/python3
-""" This module prints state object with the
-name passed as argumment"""
+""" This module deletes all state object with the
+letter 'a' in it"""
 
 if __name__ == "__main__":
     from sqlalchemy import create_engine

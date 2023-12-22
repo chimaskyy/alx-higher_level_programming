@@ -1,6 +1,5 @@
 #!/usr/bin/python3
-""" This module prints state object with the
-name passed as argumment"""
+""" This module adds new objest to the table"""
 
 if __name__ == "__main__":
     from sqlalchemy import create_engine
