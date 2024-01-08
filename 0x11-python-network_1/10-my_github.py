@@ -14,9 +14,9 @@ if __name__ == '__main__':
     paswd = sys.argv[2]
     url = "https://api.github.com/user"
 
-    r = requests.get(url, auth=('usr', 'paswd'))
-    res = r.json()
-    if 'id' in res:
-        print(res['id'])
+    r = requests.get(url, auth=(usr, paswd))
+
+    if 'id' in r.json():
+        print(r.json()['id'])
     else:
         print(None)
