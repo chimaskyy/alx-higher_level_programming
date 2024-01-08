@@ -28,4 +28,4 @@ if __name__ == "__main__":
         print(f"{sha}: {author_name}")
 
         # date = commit["commit"]["author"]["date"]  # for date commit date
-        print(f"{sha}: {author_name} {date}")
+       # print(f"{sha}: {author_name} {date}")
