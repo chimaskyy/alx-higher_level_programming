@@ -7,7 +7,8 @@ in the header of the response.'''
 import sys
 import urllib.request
 
-req = urllib.request.Request(sys.argv[1])
+if __name__ == "__main__":
+    req = urllib.request.Request(sys.argv[1])
 
 with urllib.request.urlopen(req) as response:
     request_Id = response.headers['X-Request-Id']
