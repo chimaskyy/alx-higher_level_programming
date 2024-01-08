@@ -1,4 +1,8 @@
 #!/usr/bin/python3
+'''This module takes in a URL, sends
+a request to the URL and displays the
+value of the X-Request-Id variable found
+in the header of the response.'''
 
 import sys
 import urllib.request
@@ -6,5 +10,5 @@ import urllib.request
 req = urllib.request.Request(sys.argv[1])
 
 with urllib.request.urlopen(req) as response:
-    request_Id = response.getheader('X-Request-Id')
+    request_Id = response.headers['X-Request-Id']
     print(request_Id)
